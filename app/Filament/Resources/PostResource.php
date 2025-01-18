@@ -20,6 +20,9 @@ use App\Filament\Resources\PostResource\Pages\EditPost;
 use App\Filament\Resources\PostResource\Pages\ListPosts;
 use App\Filament\Resources\PostResource\Pages\CreatePost;
 use App\Filament\Resources\PostResource\RelationManagers;
+use Filament\Forms\Components\Card;
+use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\TextInput;
 
 class PostResource extends Resource
 {
@@ -31,7 +34,11 @@ class PostResource extends Resource
     {
         return $form
             ->schema([
-                //
+                Card::make()->schema([
+                    TextInput::make('title')->required(),
+                    TextInput::make('content')->required(),
+                    FileUpload::make('image')->required()
+                ]),
             ]);
     }
 
